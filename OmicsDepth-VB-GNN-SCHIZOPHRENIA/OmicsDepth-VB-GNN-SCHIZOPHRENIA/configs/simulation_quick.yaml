@@ -1,0 +1,21 @@
+# Smoke-test version of simulation.yaml (minutes on a laptop).
+graphs: [ER-2, ER-4, SF-4]
+d: 20
+n: 1000
+trials: 3
+seed: 2026
+rho: 0.0
+sigma2: 1.0
+families: [gp, mlp, periodic]
+fdr_alpha: 0.05
+methods: [PC, NOTEARS, DAG-GNN, GraN-DAG, DCDI, VB-GNN]
+vbgnn:
+  iters: 4000
+  lam: 0.03
+  acyc_prior: notears
+  acyc_weight: 30.0
+  tau: 1.0
+  lr_pi: 0.003
+baselines:
+  PC: {alpha: 0.01, max_cond: 3}
+  NOTEARS: {lambda1: 0.1, w_threshold: 0.3}

@@ -1,0 +1,12 @@
+source,target
+SNP_SDHB,SDHB
+SDHB,MitoStress
+MitoStress,Lactate
+MitoStress,Fumarate
+Citrate,aKG
+H3K27ac_GAPDH,GAPDH
+GRIN2A,DLG4
+DLG4,SYN1
+MitoStress,NDUFS1
+Lactate,H3K27ac_GRIN2A
+GFAP,GRIN2A

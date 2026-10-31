@@ -1,0 +1,11 @@
+compound,mechanism,causal_match_score
+Metformin,Metabolic regulator & AMPK activator,-0.7009640091120055
+Dimethyl Fumarate,Mitochondrial modulator & Nrf2 activator,-0.5559301576070056
+Dimethyl-aKG,Cell-permeable alpha-KG ester,-0.3696991585202487
+Decoy_2,random perturbation (decoy),-0.25679868727587507
+Decoy_1,random perturbation (decoy),-0.22500085029996839
+Vorinostat,Histone deacetylase (HDAC) inhibitor,-0.15992351081670977
+Haloperidol,D2 antagonist (decoy),0.03734533942901902
+Decoy_5,random perturbation (decoy),0.09606951186454984
+Decoy_3,random perturbation (decoy),0.29523783056074554
+Decoy_4,random perturbation (decoy),0.33419602410487714

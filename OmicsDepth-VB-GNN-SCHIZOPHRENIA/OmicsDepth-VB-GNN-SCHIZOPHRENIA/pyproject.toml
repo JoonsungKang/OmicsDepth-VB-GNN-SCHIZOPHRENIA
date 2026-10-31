@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omicsdepth-vbgnn"
+version = "1.0.0"
+description = "Dependency-aware multi-omic causal discovery with Variational Bayesian Graph Neural Networks (VB-GNN) and EGS regularization"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+  {name = "Saebom Jeon"}, {name = "Heiju Chun"}, {name = "Eunseo Yun"},
+  {name = "Joonsung Kang", email = "moonsukang0223@gmail.com"},
+]
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22", "scipy>=1.8", "pandas>=1.4", "matplotlib>=3.5", "pyyaml>=6.0"]
+keywords = ["causal discovery", "multi-omics", "variational inference", "graph neural network", "schizophrenia"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.optional-dependencies]
+baselines = ["torch>=1.10", "gcastle>=1.0.3", "causal-learn>=0.1.3"]
+notebooks = ["jupyter", "nbconvert"]
+dev = ["pytest>=7", "tabulate"]
+
+[project.urls]
+Repository = "https://github.com/JoonsungKang/OmicsDepth-VB-GNN-SCHIZOPHRENIA"
+
+[tool.setuptools]
+packages = ["vbgnn", "baselines"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

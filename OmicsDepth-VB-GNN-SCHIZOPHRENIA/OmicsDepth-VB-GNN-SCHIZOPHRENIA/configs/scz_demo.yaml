@@ -1,0 +1,57 @@
+# End-to-end analysis of the bundled synthetic schizophrenia cohort (data/demo).
+# Regenerate the data with: python scripts/make_demo_data.py
+name: synthetic SCZ demo cohort
+synthetic: true
+root: ..                      # paths below are relative to the repository root
+seed: 2026
+output_dir: results/scz_demo
+checkpoint: checkpoints/vbgnn_scz_demo.npz
+val_fraction: 0.2             # donors held out for validation
+fdr_alpha: 0.05
+gsea_permutations: 1000
+
+data:
+  samples: data/demo/samples.csv
+  layers:
+    - {name: genotype,        path: data/demo/genotype.csv,        log2: false}
+    - {name: metabolomics,    path: data/demo/metabolomics.csv,    log2: true}
+    - {name: epigenomics,     path: data/demo/epigenomics.csv,     log2: true}
+    - {name: transcriptomics, path: data/demo/transcriptomics.csv, log2: true}
+  donor_col: donor_id
+  group_col: cell_type
+  center_by_group: true
+  diagnosis_col: diagnosis
+  case_label: SCZ
+  covariates: [pmi, age, sex, batch]
+  n_surrogate_variables: 0   # >0 adds SVA-style components; see the warning in vbgnn/adversarial.py
+  nuisance_mode: adversarial  # adversarial | residualize | none
+  prior_edges: data/demo/prior_edges.csv
+  reference_edges: data/demo/reference_edges.csv   # withheld from the prior
+  true_edges: data/demo/true_edges.csv             # planted truth (synthetic data only)
+  gene_sets: data/demo/gene_sets.json
+  compound_signatures: data/demo/compound_signatures.csv
+
+comparison_methods: [GraN-DAG, NOTEARS, Correlation]  # GraN-DAG needs gcastle + torch
+
+vbgnn:
+  iters: 4000
+  hidden: 16
+  lam: 0.03
+  acyc_prior: notears
+  acyc_weight: 30.0
+  tau: 1.0
+  lr_pi: 0.003
+  adv_weight: 1.0
+  adv_warmup: 500
+  seed: 0
+
+axis:
+  source: Succinate
+  targets: [GRIN2A, DISC1]
+  delta: 1.0
+  group_iters: 1500          # iterations of each cell-type-specific refit
+  counterfactual_groups: [PV_interneuron, L23_pyramidal, Astrocyte]
+  report: [H3K27ac_GRIN2A, H3K27ac_DISC1, H3K9me3_GRIN2A, H3K9me3_DISC1, GRIN2A, DISC1, DLG4]
+  drug_group: PV_interneuron
+  graph_nodes: [MitoStress, Succinate, aKG, Lactate, H3K27ac_GRIN2A, H3K27ac_DISC1,
+                H3K9me3_GRIN2A, H3K9me3_DISC1, GRIN2A, DISC1, DLG4, SHANK3]

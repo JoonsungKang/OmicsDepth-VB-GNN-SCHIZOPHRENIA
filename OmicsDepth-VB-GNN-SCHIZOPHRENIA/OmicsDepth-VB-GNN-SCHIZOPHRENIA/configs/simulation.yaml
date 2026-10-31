@@ -1,0 +1,26 @@
+# Table 1 of the main text: d = 100 nodes, n = 1000 samples, 50 Monte-Carlo trials.
+# Full run is CPU-heavy (VB-GNN ~1 min per fit at d = 100); use --jobs to parallelise.
+graphs: [ER-2, ER-4, SF-4]
+d: 100
+n: 1000
+trials: 50
+seed: 2026
+rho: 0.0            # inter-entity noise correlation (Table 1 uses independent noise)
+sigma2: 1.0
+families: [gp, mlp, periodic]
+fdr_alpha: 0.05
+methods: [PC, NOTEARS, DAG-GNN, GraN-DAG, DCDI, VB-GNN]
+vbgnn:
+  iters: 4000
+  lam: 0.03
+  beta: 1.0
+  acyc_prior: notears
+  acyc_weight: 30.0
+  tau: 1.0
+  lr_pi: 0.003
+baselines:
+  PC: {alpha: 0.01, max_cond: 3}
+  NOTEARS: {lambda1: 0.1, w_threshold: 0.3}
+  DAG-GNN: {}
+  GraN-DAG: {}
+  DCDI: {}

@@ -1,0 +1,6 @@
+# Optional: original implementations of the deep-learning baselines (Table 1, Figure 2).
+# DAG-GNN and GraN-DAG are run through gCastle; DCDI from its official repository
+# (https://github.com/slachapelle/dcdi), see baselines/external.py.
+torch>=1.10
+gcastle>=1.0.3
+causal-learn>=0.1.3

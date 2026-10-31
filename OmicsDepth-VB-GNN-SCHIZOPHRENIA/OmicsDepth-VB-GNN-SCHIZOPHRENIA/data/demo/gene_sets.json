@@ -1,0 +1,26 @@
+{
+  "Mito-Metabolic Stress": [
+    "MitoStress",
+    "SDHB",
+    "NDUFS1",
+    "Succinate",
+    "Fumarate",
+    "Lactate",
+    "aKG"
+  ],
+  "H3K27ac Remodeling": [
+    "H3K27ac_GRIN2A",
+    "H3K27ac_DISC1",
+    "H3K9me3_GRIN2A",
+    "H3K9me3_DISC1",
+    "KDM4A",
+    "HDAC2"
+  ],
+  "Synaptic Scaffolding": [
+    "GRIN2A",
+    "DISC1",
+    "DLG4",
+    "SHANK3",
+    "SYN1"
+  ]
+}

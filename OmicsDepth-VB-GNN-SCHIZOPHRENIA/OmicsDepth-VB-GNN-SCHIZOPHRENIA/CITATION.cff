@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article below."
+title: "OmicsDepth VB-GNN: dependency-aware multi-omic causal discovery"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/JoonsungKang/OmicsDepth-VB-GNN-SCHIZOPHRENIA"
+authors:
+  - family-names: Jeon
+    given-names: Saebom
+  - family-names: Chun
+    given-names: Heiju
+  - family-names: Yun
+    given-names: Eunseo
+  - family-names: Kang
+    given-names: Joonsung
+    email: moonsukang0223@gmail.com
+preferred-citation:
+  type: article
+  title: "A Mitochondrial-Epigenetic Feedback Loop Linked to Synaptic Gene Repression in Schizophrenia Uncovered by Multi-Omic Causal Discovery"
+  authors:
+    - family-names: Jeon
+      given-names: Saebom
+    - family-names: Chun
+      given-names: Heiju
+    - family-names: Yun
+      given-names: Eunseo
+    - family-names: Kang
+      given-names: Joonsung
+  year: 2026

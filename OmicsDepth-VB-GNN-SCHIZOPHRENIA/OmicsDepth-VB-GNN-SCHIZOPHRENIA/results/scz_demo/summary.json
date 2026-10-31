@@ -1,0 +1,77 @@
+{
+  "n_selected_edges": 17,
+  "posterior_expected_fdp": 0.04355110643094795,
+  "fdr_alpha": 0.05,
+  "vs_ground_truth": {
+    "shd": 23,
+    "fdr": 0.29411764705882354,
+    "tpr": 0.35294117647058826,
+    "nnz": 17,
+    "reversed": 5
+  },
+  "directional_auc": {
+    "VB-GNN": 0.8624,
+    "NOTEARS": 0.8146,
+    "Correlation": 0.7898
+  },
+  "heldout_nll": {
+    "vbgnn": 33.33093863961265
+  },
+  "gsea": {
+    "Mito-Metabolic Stress": {
+      "nes": 1.173329428976264,
+      "pval": 0.24972497249724973
+    },
+    "Synaptic Scaffolding": {
+      "nes": 1.1000124939622635,
+      "pval": 0.40162037037037035
+    },
+    "H3K27ac Remodeling": {
+      "nes": 0.7546909988476266,
+      "pval": 0.7942477876106194
+    }
+  },
+  "celltype_targeted_flux": {
+    "PV_interneuron": 1.0304125839509035,
+    "L23_pyramidal": 0.9986269862149887,
+    "Astrocyte": 0.7976945825308293,
+    "Microglia": 0.4408299155290037,
+    "Oligodendrocyte": 0.326962180602108
+  },
+  "counterfactual": {
+    "PV_interneuron:H3K27ac_GRIN2A": 0.707,
+    "PV_interneuron:H3K27ac_DISC1": 1.024,
+    "PV_interneuron:H3K9me3_GRIN2A": 1.679,
+    "PV_interneuron:H3K9me3_DISC1": 1.306,
+    "PV_interneuron:GRIN2A": 1.141,
+    "PV_interneuron:DISC1": 0.998,
+    "PV_interneuron:DLG4": 1.077,
+    "L23_pyramidal:H3K27ac_GRIN2A": 0.719,
+    "L23_pyramidal:H3K27ac_DISC1": 0.701,
+    "L23_pyramidal:H3K9me3_GRIN2A": 1.416,
+    "L23_pyramidal:H3K9me3_DISC1": 1.116,
+    "L23_pyramidal:GRIN2A": 0.824,
+    "L23_pyramidal:DISC1": 0.767,
+    "L23_pyramidal:DLG4": 0.857,
+    "Astrocyte:H3K27ac_GRIN2A": -0.16,
+    "Astrocyte:H3K27ac_DISC1": 2.208,
+    "Astrocyte:H3K9me3_GRIN2A": -0.747,
+    "Astrocyte:H3K9me3_DISC1": 9.642,
+    "Astrocyte:GRIN2A": 0.306,
+    "Astrocyte:DISC1": 0.797,
+    "Astrocyte:DLG4": 0.222
+  },
+  "causal_match_scores": {
+    "Metformin": -0.701,
+    "Dimethyl Fumarate": -0.556,
+    "Dimethyl-aKG": -0.37,
+    "Decoy_2": -0.257,
+    "Decoy_1": -0.225,
+    "Vorinostat": -0.16,
+    "Haloperidol": 0.037,
+    "Decoy_5": 0.096,
+    "Decoy_3": 0.295,
+    "Decoy_4": 0.334
+  },
+  "runtime_seconds": 67.8
+}

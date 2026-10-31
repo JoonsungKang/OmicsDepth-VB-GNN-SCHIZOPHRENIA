@@ -1,0 +1,58 @@
+# Template for the controlled-access PsychENCODE / CommonMind DLPFC data (main text Section 4).
+# The data cannot be redistributed. Request access via the PsychENCODE Knowledge Portal
+# (https://psychencode.synapse.org/; Synapse syn20821315, syn21415492) and CommonMind
+# (Synapse syn2755792), convert the matched profiles to the CSV layout of docs/DATA.md,
+# put them under data/psychencode/ (git-ignored) and run:
+#     python scripts/run_scz_pipeline.py --config configs/scz_psychencode.yaml
+name: PsychENCODE DLPFC
+synthetic: false
+root: ..
+seed: 2026
+output_dir: results/scz_psychencode
+checkpoint: checkpoints/vbgnn_scz_psychencode.npz
+val_fraction: 0.2
+fdr_alpha: 0.05
+gsea_permutations: 10000
+
+data:
+  samples: data/psychencode/samples.csv            # sample_id, donor_id, cell_type, diagnosis, pmi, age, sex, batch
+  layers:
+    - {name: genotype,        path: data/psychencode/genotype.csv,        log2: false}
+    - {name: epigenomics,     path: data/psychencode/chipseq.csv,         log2: true, quantile_normalize: true}
+    - {name: transcriptomics, path: data/psychencode/snrnaseq_pseudobulk.csv, log2: true, quantile_normalize: true}
+    - {name: metabolomics,    path: data/psychencode/lcms.csv,            log2: true}
+  donor_col: donor_id
+  group_col: cell_type
+  center_by_group: true
+  diagnosis_col: diagnosis
+  case_label: SCZ
+  covariates: [pmi, age, sex, batch]
+  n_surrogate_variables: 0       # see the warning in vbgnn/adversarial.py before increasing
+  nuisance_mode: adversarial
+  prior_edges: data/psychencode/kegg_prior_edges.csv     # curated pathway edges (source,target)
+  reference_edges: data/psychencode/reference_edges.csv  # experimentally supported relations, NOT in the prior
+  gene_sets: data/psychencode/gene_sets.json
+  compound_signatures: data/psychencode/compound_signatures.csv   # e.g. LINCS L1000 consensus signatures
+
+comparison_methods: [GraN-DAG, NOTEARS, Correlation]
+
+vbgnn:
+  iters: 6000
+  hidden: 16
+  lam: 0.03
+  acyc_prior: notears
+  acyc_weight: 30.0
+  tau: 1.0
+  lr_pi: 0.003
+  adv_weight: 1.0
+  adv_warmup: 500
+  seed: 0
+
+axis:
+  source: Succinate
+  targets: [GRIN2A, DISC1]
+  delta: 1.0
+  group_iters: 1500
+  counterfactual_groups: [PV_interneuron, L23_pyramidal]
+  report: [H3K27ac_GRIN2A, H3K27ac_DISC1, H3K9me3_GRIN2A, H3K9me3_DISC1, GRIN2A, DISC1]
+  drug_group: PV_interneuron

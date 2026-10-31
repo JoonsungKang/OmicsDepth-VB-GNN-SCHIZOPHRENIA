@@ -1,0 +1,26 @@
+# Figure 2: (a) FDR vs inter-entity covariance rho, (b) SHD vs noise variance sigma^2.
+# "VB-GNN-Shannon" is the same model with the Shannon regularizer (SI Eq. 11), the
+# cleanest test of the regularizer itself. External baselines are run when installed.
+d: 100
+n: 1000
+trials: 20
+seed: 7
+fdr_alpha: 0.05
+families: [gp, mlp, periodic]
+rho_sweep:
+  graph: ER-2
+  values: [0.0, 0.2, 0.4, 0.6, 0.8]
+  sigma2: 1.0
+  methods: [NOTEARS, VB-GNN-Shannon, GraN-DAG, DCDI, VB-GNN]
+sigma2_sweep:
+  graphs: [ER-2, SF-4]
+  values: [0.1, 0.5, 1.0, 1.5, 2.0]
+  rho: 0.0
+  methods: [NOTEARS, GraN-DAG, DAG-GNN, VB-GNN-Shannon, VB-GNN]
+vbgnn:
+  iters: 4000
+  lam: 0.03
+  acyc_prior: notears
+  acyc_weight: 30.0
+  tau: 1.0
+  lr_pi: 0.003
